@@ -23,11 +23,47 @@ namespace Client
     /// </summary>
     public partial class MainWindow : Window
     {
-        double chislo_na_server;
         public MainWindow()
         {
             InitializeComponent();
 
+        }
+        void Task()
+        {
+            int port = 8888;
+            string address = "192.168.12.142";
+            try
+            {
+                IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse(address), port);
+
+                Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                // подключаемся к удаленному хосту
+                socket.Connect(ipPoint);
+                string message = chislo.Text;
+                byte[] data = Encoding.ASCII.GetBytes(message);
+                socket.Send(data);
+
+                // получаем ответ
+                data = new byte[256]; // буфер для ответа
+                StringBuilder builder = new StringBuilder();
+                int bytes = 0; // количество полученных байт
+
+                do
+                {
+                    bytes = socket.Receive(data, data.Length, 0);
+                    builder.Append(Encoding.ASCII.GetString(data, 0, bytes));
+                }
+                while (socket.Available > 0);
+                MessageBox.Show("ответ сервера: " + builder.ToString(), "Результат", MessageBoxButton.OK);
+
+                // закрываем сокет
+                socket.Shutdown(SocketShutdown.Both);
+                socket.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "lmao");
+            }
         }
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
@@ -37,36 +73,9 @@ namespace Client
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            vivod.Text = Convert.ToString(chislo_na_server);
+            Task();
+            this.Close();
         }
 
-        public void Chislo_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            double message;
-            message = Convert.ToDouble(chislo.Text);
-            chislo_na_server = message;
-        }
-        static int port = 5000;
-        static string address = "192.168.12.142";
-        static void MainTask(string[] args)
-        {
-            try
-            {
-                IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse(address), port);
-
-                Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                socket.Connect(ipPoint);
-                byte[] data = Encoding.Unicode.GetBytes(Convert.ToString(chislo_na_server));
-                socket.Send(data);
-
-                socket.Shutdown(SocketShutdown.Both);
-                socket.Close();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            Console.Read();
-        }
     }
 }

@@ -8,9 +8,8 @@
         Title="MainWindow" Height="218.078" Width="364">
     <Grid Margin="0,0,0,0" HorizontalAlignment="Left" Width="356" Height="188" VerticalAlignment="Top">
         <Label Content="Введите число" Margin="10,9,12,154"/>
-        <TextBox x:Name="chislo" Margin="10,35,12,131" TextWrapping="Wrap" PreviewTextInput="NumberValidationTextBox" TextChanged="Chislo_TextChanged"/>
+        <TextBox x:Name="chislo" Margin="10,35,12,131" TextWrapping="Wrap" PreviewTextInput="NumberValidationTextBox"/>
         <Button Content="ОК" Margin="10,63,12,104" Click="Button_Click"/>
-        <TextBlock x:Name="vivod" Margin="10,90,12,67" TextWrapping="Wrap" RenderTransformOrigin="-6.914,0.125" Text="Вывод"/>
 
     </Grid>
 </Window>
