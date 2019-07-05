@@ -77,5 +77,14 @@ namespace WpfApp1
                 this.Close();
             }
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (socket.Connected)
+            {
+                socket.Shutdown(SocketShutdown.Both);
+                socket.Close();
+            }
+        }
     }
 }

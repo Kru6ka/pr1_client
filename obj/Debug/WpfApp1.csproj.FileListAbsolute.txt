@@ -27,3 +27,4 @@ C:\Users\a.ilyin\Desktop\Client\obj\Debug\WpfApp1.csproj.GenerateResource.cache
 C:\Users\a.ilyin\Desktop\Client\obj\Debug\WpfApp1.csproj.CoreCompileInputs.cache
 C:\Users\a.ilyin\Desktop\Client\obj\Debug\WpfApp1.exe
 C:\Users\a.ilyin\Desktop\Client\obj\Debug\WpfApp1.pdb
+C:\Users\a.ilyin\Desktop\Client\obj\Debug\WpfApp1.csprojAssemblyReference.cache

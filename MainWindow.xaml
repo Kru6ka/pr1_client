@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="PR1" Height="193.837" Width="267.589" ResizeMode="NoResize">
+        Title="PR1" Height="193.837" Width="267.589" ResizeMode="NoResize" Closing="Window_Closing">
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,4,8" Width="248" Height="147">
         <Label Content="Введите число" Margin="10,0,12,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
         <Line Height="5"></Line>
