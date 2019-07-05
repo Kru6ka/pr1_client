@@ -40,7 +40,10 @@ namespace WpfApp1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Task();
+            if (!socket.Connected)
+            {
+                MessageBox.Show("Необходимо подключиться к серверу.", "Ошибка!");
+            } else Task();
         }
 
         private void Input_PreviewTextInput(object sender, TextCompositionEventArgs e)
